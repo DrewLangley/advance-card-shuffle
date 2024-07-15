@@ -1,0 +1,19 @@
+{
+	"name": "advance-card-shuffle",
+	"version": "1.0.0",
+	"description": "Advance tech test - Card shuffle and poker game",
+	"main": "index.js",
+	"author": "Drew Langley <17511304+DrewLangley@users.noreply.github.com>",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"play": "npx tsx index.ts"
+	},
+	"dependencies": {
+		"poker-evaluator-ts": "^2.0.3",
+		"readline-sync": "^1.4.10",
+		"tsc": "^2.0.4",
+		"tsx": "^4.16.2",
+		"typescript": "^5.5.3"
+	}
+}
