@@ -23,8 +23,23 @@ const getFirstChar = (cardName: CardName): string => {
   }
 }
 
+const getSuiteSymbol = (suite: Suite): string => {
+  switch (suite) {
+    case Suite.Hearts: return '\u2665';
+    case Suite.Diamonds: return '\u2662';
+    case Suite.Clubs: return '\u2663';
+    case Suite.Spades: return '\u2664';
+  }
+}
+
 export const mapForSolver = (hand: Card[]): string[] => {
   return hand.map(card => `${getFirstChar(card.cardName)}${Suite[card.suite].charAt(0)}`);
 }
+
+export const prettyPrintCard = (card: Card): string => {
+  return `${getFirstChar(card.cardName)}${getSuiteSymbol(card.suite)}`
+
+}
+
 
 export default { mapForSolver };

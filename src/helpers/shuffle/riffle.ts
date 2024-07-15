@@ -7,7 +7,6 @@ export const riffleShuffle = (deck: Deck, repeat: number = 20): Deck => {
   const half = Math.floor(deck.cards.length / 2);
   const firstHalf = deck.cards.slice(0, half);
   const secondHalf = deck.cards.slice(half);
-  // const shuffledCards = firstHalf.concat(secondHalf);
 
   const shuffledCards = [];
 

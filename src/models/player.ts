@@ -1,5 +1,5 @@
 import * as PokerEvaluator from 'poker-evaluator-ts';
-import { mapForSolver } from "helpers/solverMap";
+import { mapForSolver } from "helpers/utils";
 import { Card } from "./card";
 
 export class Player {

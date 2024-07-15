@@ -1,3 +1,5 @@
+
+// Enum to store all the card names
 export enum CardName {
   Ace,
   Two,

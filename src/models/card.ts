@@ -1,5 +1,7 @@
+import { prettyPrintCard } from "helpers/utils";
 import { CardName } from "./enum/cardName";
 import { Suite } from "./enum/suite";
+
 
 export class Card {
   cardName: CardName;
@@ -10,7 +12,7 @@ export class Card {
     this.suite = suite;
   }
 
-  public toString (): string {
-    return `${CardName[this.cardName]} of ${Suite[this.suite]}`;
+  public toString(): string {
+    return `${prettyPrintCard(this)} - ${CardName[this.cardName]} of ${Suite[this.suite]}`;
   }
 }
