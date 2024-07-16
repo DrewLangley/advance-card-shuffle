@@ -5,6 +5,15 @@ import { shuffle } from "./shuffle";
 import { ShuffleType } from "./shuffle/shuffleType";
 import { CardName } from "models/enum/cardName";
 
+/**
+ *
+ * Creates a deck of cards and a player, shuffles the deck and deals cards to the player.
+ * @param {string} userName player's name
+ * @param {number} handSize amount of cards to draw
+ * @param {ShuffleType} shuffleType
+ * @param {number} amount of time to shuffle the deck
+ * @returns Array of player's cards and the result calculated by the poker evaluator
+ */
 export const play = async (userName: string, handSize: number, shuffleType: ShuffleType, shuffleNumber: number) => {
 
   // create deck
@@ -19,6 +28,9 @@ export const play = async (userName: string, handSize: number, shuffleType: Shuf
   // deal cards
   player.dealCards(deck.cards, handSize);
   console.log('\n ',);
+  // arrange hand
+  player.arrangeHand();
+
   // reveal cards
   console.log(player.checkCards());
   console.log('\n ',);

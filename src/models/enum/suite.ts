@@ -1,4 +1,4 @@
-// Enum to store Suite
+// Enum to store Suites
 export enum Suite {
   Hearts,
   Diamonds,

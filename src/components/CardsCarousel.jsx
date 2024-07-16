@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { Carousel } from "primereact/carousel";
 import { ImSpades, ImHeart, ImClubs, ImDiamonds } from "react-icons/im";
 
 import { getFirstCharStr } from "../helpers/utils";
+import { CardFont, CardItem, CardContent } from "./components.style";
 
 const formatCard = (card) => {
 	const { cardName, suite } = card;
 	let color, logo;
 	switch (suite) {
 		case "Hearts":
-			logo = <ImHeart size={40} color="red" />;
+			logo = <ImHeart size={40} />;
 			color = "red";
 			break;
 		case "Diamonds":
-			logo = <ImDiamonds size={40} color="red" />;
+			logo = <ImDiamonds size={40} />;
 			color = "red";
 			break;
 		case "Clubs":
-			logo = <ImClubs size={40} color="black" />;
+			logo = <ImClubs size={40} />;
 			color = "black";
 			break;
 		case "Spades":
-			logo = <ImSpades size={40} color="black" />;
+			logo = <ImSpades size={40} />;
 			color = "black";
 			break;
 		default:
@@ -37,6 +38,13 @@ const formatCard = (card) => {
 	};
 };
 
+/**
+ *
+ * A way of presenting a player's hand
+ * @param {Array} cards cards to show
+ * @param {Object} result result object
+ * @returns Cards carousel component
+ */
 export const CardsCarousel = ({ cards, result }) => {
 	const responsiveOptions = [
 		{
@@ -57,34 +65,37 @@ export const CardsCarousel = ({ cards, result }) => {
 	];
 
 	const cardTemplate = (card) => {
+		// turn the card into something more noticeable
 		const { cardName, color, suite, logo, first } = formatCard(card);
-		console.log("first: ", first);
 
 		return (
-			<div className="card-item shadow-1">
-				<div className="card-item-content">
+			<CardItem className="shadow-1 m-1">
+				<CardContent className="card-item-content">
+					{/* card corner */}
 					<div className="grid col-12">
-						<div className="col-2 ml-1 mr-1 mt-1 mb-1">
-							<h4>{first}</h4>
+						<div className="col-2 mb-6">
+							<CardFont color={color}>{first}</CardFont>
 						</div>
-						<div className="col-2 ml-1 mr-1 mt-1 mb-1">
-							<h4>{logo}</h4>
+						<div className="col-2 mb-6">
+							<CardFont color={color}>{logo}</CardFont>
 						</div>
 					</div>
-					<div className="mb-3 mt-3">
-						<h3 className="mb-1">{`${cardName} of ${suite}`}</h3>
+					{/* card name */}
+					<div className="mb-3 mt-3 p-3">
+						<h3>{`${cardName} of ${suite}`}</h3>
 					</div>
+					{/* mirrored card corner */}
 					<div className="grid col-12">
-						<div className="col-6"></div>
-						<div className="col-2 ml-1 mr-1 mt-1 mb-1">
-							<h4>{logo}</h4>
+						<div className="col-8"></div>
+						<div className="col-2 mt-6 rotate-180">
+							<CardFont color={color}>{logo}</CardFont>
 						</div>
-						<div className="col-2 ml-1 mr-1 mt-1 mb-1">
-							<h4>{first}</h4>
+						<div className="col-2 mt-6 rotate-180">
+							<CardFont color={color}>{first}</CardFont>
 						</div>
 					</div>
-				</div>
-			</div>
+				</CardContent>
+			</CardItem>
 		);
 	};
 
@@ -98,8 +109,8 @@ export const CardsCarousel = ({ cards, result }) => {
 					showNavigators={false}
 					showIndicators={false}
 					responsiveOptions={responsiveOptions}
-					className="custom-carousel"
 					itemTemplate={cardTemplate}
+					// display results
 					header={
 						<h2>
 							You have a {result.handName} with a rank of {result.handRank} and{" "}
@@ -111,4 +122,5 @@ export const CardsCarousel = ({ cards, result }) => {
 		</div>
 	);
 };
+
 export default CardsCarousel;

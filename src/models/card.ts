@@ -2,7 +2,10 @@ import { prettyPrintCard } from "helpers/utils";
 import { CardName } from "./enum/cardName";
 import { Suite } from "./enum/suite";
 
-
+/**
+ * Card Class Definition
+ * Represents a playing card with name and suite.
+ */
 export class Card {
   cardName: CardName;
   suite: Suite;

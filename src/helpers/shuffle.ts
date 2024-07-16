@@ -4,7 +4,9 @@ import { fisherYatesShuffle } from "./shuffle/fisherYates";
 import { riffleShuffle } from "./shuffle/riffle";
 import { ShuffleType } from "./shuffle/shuffleType";
 
-
+/** 
+ * Interface for handling which shuffle method
+ */
 export const shuffle = (deck: Deck, shuffleType: ShuffleType, shuffleCount: number = 10) => {
   let shuffledDeck: Deck = deck;
   console.log('Shuffling........................ ');

@@ -43,7 +43,10 @@ export class Player {
     const hand = mapForSolver(this.hand);
 
     return PokerEvaluator.evalHand(hand);
+  }
 
+  public arrangeHand = () => {
+    this.hand.sort((a, b) => b.cardName - a.cardName);
   }
 }
 

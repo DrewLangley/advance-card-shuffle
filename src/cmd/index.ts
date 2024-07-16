@@ -4,7 +4,11 @@ import { ShuffleType } from "../helpers/shuffle/shuffleType";
 
 
 
-
+/**
+ * This file is intended to be played form the command line using `yarn play` command
+ * 
+ * the function prompts the user and then calls the play function with inputted arguments
+ */
 const consolePlay = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log('Hi ' + userName + '!');

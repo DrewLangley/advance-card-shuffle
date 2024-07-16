@@ -5,6 +5,12 @@ import ListBox from "./form/ListBox.component";
 
 import { ShuffleType } from "../helpers/shuffle/shuffleType";
 
+/**
+ *
+ * Game Settings Form Component
+ * Handled by React Hook Forms
+ * @returns Form components controlled by RHF Form Provider
+ */
 export const GameSettings = () => {
 	return (
 		<div className="row grid col-12">
@@ -23,6 +29,8 @@ export const GameSettings = () => {
 					name="shuffleCount"
 					label="Shuffle Count"
 					placeholder="Shuffle Count"
+					min={3}
+					max={200}
 				/>
 			</div>
 			<div className="grid col-6">

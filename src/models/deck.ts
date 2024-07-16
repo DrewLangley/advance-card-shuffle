@@ -2,8 +2,11 @@ import { Card } from "./card";
 import { CardName } from "./enum/cardName";
 import { Suite } from "./enum/suite";
 
+/**
+ * Deck Class Definition
+ * Represents a deck of playing cards.
+ */
 export class Deck {
-  // Define properties and methods for the Deck class here
   cards: Array<Card>;
 
   constructor(includeJokers: boolean = false) {

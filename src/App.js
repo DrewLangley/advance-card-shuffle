@@ -10,14 +10,10 @@ import { Button } from 'primereact/button';
 
 import axios from "axios";
 
-import Card from './components/Card.jsx';
 import CardsCarousel from './components/CardsCarousel.jsx';
 import GameSettings from './components/GameSettings.jsx';
 import Heading from './components/Heading.jsx';
-import ButtonHolder from './App.style.js';
-import './App.css';
-
-// import play from "./helpers/game.ts";
+import { ButtonHolder, Card } from './App.style.js';
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
@@ -34,8 +30,6 @@ export const App = () => {
       shuffleCount: 10,
     }
   });
-
-
 
   const { handleSubmit } = methods;
 
@@ -59,27 +53,6 @@ export const App = () => {
       .finally(() => {
         setLoading(false);
       });
-
-    // const results = play(playerName, handSize, shuffleType, shuffleCount);
-    // console.log('results: ', results);
-    // const payload = {
-    //   ...values,
-    //   archived: values.status === 'Inactive',
-    //   email: values.email.toLowerCase(),
-    // };
-
-    // delete payload.status;
-    // createFinancialAdviser(payload)
-    //   .then(() => {
-    //     Notification.success({
-    //       title: 'Success',
-    //       message: 'User has been successfully created.',
-    //     });
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //     close(true);
-    //   });
   };
 
 

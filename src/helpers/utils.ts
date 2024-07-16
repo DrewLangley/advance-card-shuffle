@@ -3,7 +3,11 @@
 import { Card } from "models/card";
 import { CardName } from "models/enum/cardName";
 import { Suite } from "models/enum/suite";
-
+/**
+ * Maps cards from the ENUM version to the evaluator version
+ * @param {CardName} cardName card name to translate
+ * @returns {string} string for evaluator (first char)
+ */
 export const getFirstChar = (cardName: CardName): string => {
   switch (cardName) {
     case CardName.Ace: return 'A';
@@ -22,6 +26,12 @@ export const getFirstChar = (cardName: CardName): string => {
     default: return 'Joker'; // for Joker, return Joker
   }
 }
+
+/**
+ * Maps cards from the STRING version to the evaluator version
+ * @param {string} cardName card name to translate
+ * @returns {string} string for evaluator (first char)
+ */
 export const getFirstCharStr = (cardName: string): string => {
   switch (cardName) {
     case 'Ace': return 'A';
@@ -41,6 +51,11 @@ export const getFirstCharStr = (cardName: string): string => {
   }
 }
 
+/**
+ * Maps card suites to the hex or unicode version to display in command line output
+ * @param {Suite} suite suite to translate
+ * @returns {string} hex/unicode string representation of suite logo
+ */
 const getSuiteSymbol = (suite: Suite): string => {
   switch (suite) {
     case Suite.Hearts: return '\u2665';
@@ -50,16 +65,28 @@ const getSuiteSymbol = (suite: Suite): string => {
   }
 }
 
+/**
+ * Maps cards from the enum version to the evaluator version array to array
+ * @param {Array<Card>} hand cards to translate
+ * @returns {string} string for evaluator (first char and suite char)
+ */
 export const mapForSolver = (hand: Card[]): string[] => {
   return hand.map(card => `${getFirstChar(card.cardName)}${Suite[card.suite].charAt(0)}`);
 }
 
+/**
+ * Pretty prints a card
+ * @param {Card} card card to print
+ * @returns {string}
+ */
 export const prettyPrintCard = (card: Card): string => {
-  console.log('card: ', card);
   return `${getFirstChar(card.cardName)}${getSuiteSymbol(card.suite)}`
-
 }
 
+/**
+ * Randomizes a boolean value with a 20% chance of true
+ * @returns {boolean}
+ */
 export const randomizeChance = () => {
   return Math.floor(Math.random() * 5) > 3;
 }

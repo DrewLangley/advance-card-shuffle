@@ -7,22 +7,27 @@ import { InputNumber } from "primereact/inputnumber";
 import { classNames } from "primereact/utils";
 
 import { Container, MainContainer } from "./Input.style";
-
+/**
+ *
+ * @param {string} name name of component for RHF controller
+ * @param {string} label
+ * @param {Object} required
+ * @param {string} className additional class names
+ * @param {Object} error
+ * @returns Number Input component handled by RHF Controller
+ */
 const NumberInput = ({
 	name,
 	label,
-	disabled,
 	required,
-	// placeholder,
 	error,
+	className,
 	prefix,
 	suffix,
 	defaultValue,
-	className,
 	mode,
 	min,
 	max,
-	tabIndex,
 }) => {
 	const [loading, setLoading] = useState(true);
 	const [focus, onFocus] = useState(false);
@@ -69,10 +74,8 @@ const NumberInput = ({
 										id={field.name}
 										inputRef={field.ref}
 										value={field.value}
-										disabled={loading || disabled}
 										prefix={prefix}
 										suffix={suffix}
-										tabIndex={tabIndex}
 										useGrouping={false}
 										maxFractionDigits={2}
 										minFractionDigits={
@@ -110,32 +113,24 @@ NumberInput.propTypes = {
 	name: PropTypes.string.isRequired,
 	required: PropTypes.object,
 	label: PropTypes.string.isRequired,
-	// placeholder: PropTypes.string,
 	error: PropTypes.object,
-	disabled: PropTypes.bool,
 	prefix: PropTypes.string,
 	suffix: PropTypes.string,
-	defaultValue: PropTypes.number,
 	className: PropTypes.string,
 	mode: PropTypes.number,
 	min: PropTypes.number,
 	max: PropTypes.number,
-	tabIndex: PropTypes.number,
 };
 
 NumberInput.defaultProps = {
-	// placeholder: '',
-	disabled: false,
 	error: {},
 	required: {},
-	defaultValue: undefined,
 	prefix: null,
 	suffix: null,
 	className: null,
 	mode: null,
 	min: null,
 	max: null,
-	tabIndex: undefined,
 };
 
 export default NumberInput;

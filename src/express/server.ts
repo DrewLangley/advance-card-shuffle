@@ -2,6 +2,11 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import { play } from "helpers/game";
 
+/**
+ * runs the express server for dealing and evaluating hands for FE app
+ * started from command line using `yarn start:api` command
+ */
+
 const app: Application = express();
 const port = 3000;
 

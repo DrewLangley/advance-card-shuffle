@@ -8,32 +8,20 @@ import { classNames } from "primereact/utils";
 
 import { Container, MainContainer } from "./Input.style";
 
-const Input = ({
-	className,
-	name,
-	label,
-	required,
-	placeholder,
-	disabled,
-	error,
-	loading: l,
-	errorBelow,
-	tabIndex,
-	containerStyle,
-}) => {
+/**
+ *
+ * @param {string} name name of component for RHF controller
+ * @param {string} label
+ * @param {Object} required
+ * @param {string} className additional class names
+ * @param {Object} error
+ * @returns Text Input component handled by RHF Controller
+ */
+const Input = ({ name, label, required, className, error }) => {
 	const [loading, setLoading] = useState(true);
 	const [focus, onFocus] = useState(false);
 
-	const {
-		control,
-		// register,
-		// reset,
-		// handleSubmit,
-		// formState: { errors },
-		// setValue,
-		// watch,
-		// getValues,
-	} = useFormContext();
+	const { control } = useFormContext();
 
 	const getFormErrorMessage = () => {
 		return (
@@ -41,11 +29,7 @@ const Input = ({
 				<>
 					<small
 						className="p-error"
-						style={
-							errorBelow
-								? { position: "relative", left: "1%" }
-								: { position: "absolute" }
-						}
+						style={{ position: "relative", left: "1%" }}
 					>
 						error&nbsp;
 						<i
@@ -64,7 +48,7 @@ const Input = ({
 	}, []);
 
 	return (
-		<MainContainer style={containerStyle}>
+		<MainContainer>
 			{loading ? (
 				<Skeleton height="2rem" className="skeleton" />
 			) : (
@@ -75,24 +59,16 @@ const Input = ({
 						rules={{ ...required }}
 						render={({ field, fieldState }) => (
 							<>
-								<span
-									className={classNames(className || "p-float-label", {
-										"p-input-icon-right": l,
-									})}
-								>
-									{l && <i className="pi pi-spin pi-spinner" />}
+								<span className={classNames(className || "p-float-label")}>
 									<InputText
 										data-cy={name}
 										{...field}
-										placeholder={placeholder}
 										id={field.name}
 										value={field.value}
-										disabled={disabled}
 										className={classNames("", {
 											"p-invalid":
 												(fieldState.error || error?.message) && !focus,
 										})}
-										tabIndex={tabIndex}
 										onFocus={() => onFocus(true)}
 										onBlur={() => onFocus(false)}
 										autoComplete="off"
@@ -117,26 +93,15 @@ const Input = ({
 Input.propTypes = {
 	className: PropTypes.string,
 	name: PropTypes.string.isRequired,
-	placeholder: PropTypes.string,
 	required: PropTypes.object.isRequired,
 	label: PropTypes.string.isRequired,
 	error: PropTypes.object,
-	disabled: PropTypes.bool,
-	loading: PropTypes.bool,
-	errorBelow: PropTypes.bool,
-	tabIndex: PropTypes.number,
-	containerStyle: PropTypes.any,
 };
 
 Input.defaultProps = {
 	className: null,
 	placeholder: null,
-	disabled: false,
-	errorBelow: false,
-	loading: false,
 	error: {},
-	tabIndex: undefined,
-	containerStyle: null,
 };
 
 export default Input;

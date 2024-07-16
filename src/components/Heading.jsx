@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ *
+ * @returns Headings and other text visuals
+ */
 export const Heading = () => {
 	return (
 		<>
@@ -22,11 +26,6 @@ export const Heading = () => {
 					</div>
 				</div>
 			</div>
-			{/* <div className="row grid col-12">
-				<div className="column col-2">Column 2</div>
-				<div className="column col-3">Column 3</div>
-				<div className="column col">Column</div>
-			</div> */}
 		</>
 	);
 };
