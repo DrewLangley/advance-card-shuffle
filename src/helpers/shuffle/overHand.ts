@@ -13,7 +13,7 @@ export const overHandShuffle = (deck: Deck, repeat: number = 20): Deck => {
     const mainChunkSize = Math.floor(Math.random() * deck.cards.length);
     const mainChunk = deck.cards.splice(deck.cards.length - mainChunkSize, mainChunkSize);
 
-
+    // while you still have some in the main chunk
     while (mainChunk.length > 0) {
       // grab a small amount of cards to either put on the top or bottom of the deck
       const randomChunkSize = Math.floor(Math.random() * mainChunk.length + 1);
@@ -30,7 +30,6 @@ export const overHandShuffle = (deck: Deck, repeat: number = 20): Deck => {
   }
 
   if (repeat > 0) {
-    console.log('deck: ', deck.toString());
     overHandShuffle(deck, repeat - 1);
   }
 

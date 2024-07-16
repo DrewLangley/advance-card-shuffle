@@ -6,6 +6,6 @@ export enum ShuffleType {
   Faro,
   FisherYates,
   Riffle,
-  Default,
   OverHand,
+  Default,
 }
