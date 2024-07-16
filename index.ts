@@ -1,11 +1,11 @@
-import { Deck } from "./src/models/deck";
-import { Player } from "./src/models/player";
-import { shuffle } from "./src/helpers/shuffle";
-import { ShuffleType } from "./src/helpers/shuffle/shuffleType";
+import play from "./src/helpers/game";
 import readlineSync from 'readline-sync';
+import { ShuffleType } from "./src/helpers/shuffle/shuffleType";
 
 
-export const play = () => {
+
+
+const consolePlay = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log('Hi ' + userName + '!');
   console.log('Welcome to poker: ');
@@ -16,26 +16,10 @@ export const play = () => {
 
   const handSize = readlineSync.questionInt('How many cards would you like to draw? 3, 5, 6 or 7', { limit: '$<3-7>' });
 
-  // create deck
-  const deck = new Deck();
-  const player = new Player(userName);
+  play(userName, handSize, shuffleType, shuffleNumber);
 
-  // shuffle the deck
-  shuffle(deck, shuffleType, shuffleNumber);
-
-  console.log('\n ',);
-
-  // deal cards
-  player.dealCards(deck.cards, handSize);
-  console.log('\n ',);
-  // reveal cards
-  console.log(player.checkCards());
-  console.log('\n ',);
-  // print result
-  console.log(player.checkResult());
-  console.log('\n ',);
 }
 
-play();
+consolePlay();
 
-export default { play }
+export default play;

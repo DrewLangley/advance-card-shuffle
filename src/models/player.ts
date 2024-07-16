@@ -38,6 +38,13 @@ export class Player {
     const { handName, handRank, value } = result;
     return `${this.name} has a ${handName} with a rank of ${handRank} and ${value} points.`;
   }
+
+  public getResult = () => {
+    const hand = mapForSolver(this.hand);
+
+    return PokerEvaluator.evalHand(hand);
+
+  }
 }
 
 export default { Player };
