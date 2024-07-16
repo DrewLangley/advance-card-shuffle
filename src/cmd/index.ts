@@ -1,6 +1,6 @@
-import play from "./src/helpers/game";
+import { play } from "../helpers/game";
 import readlineSync from 'readline-sync';
-import { ShuffleType } from "./src/helpers/shuffle/shuffleType";
+import { ShuffleType } from "../helpers/shuffle/shuffleType";
 
 
 
@@ -22,4 +22,4 @@ const consolePlay = () => {
 
 consolePlay();
 
-export default play;
+export default consolePlay;

@@ -5,15 +5,14 @@
 	/* border: 2px solid blue; */
 }
 
-.carousel-demo .product-item .product-item-content {
-	border: 1px solid var(--surface-d);
+.carousel-demo .card-item .card-item-content {
+	height: 50%;
 	border-radius: 3px;
-	margin: 0.3rem;
+	margin: 0.5rem;
 	text-align: center;
-	padding: 2rem 0;
+	padding: 2rem;
 }
 
-.carousel-demo .product-item .product-image {
-	width: 50%;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
+/* h4 {
+	border: 1px solid red;
+} */

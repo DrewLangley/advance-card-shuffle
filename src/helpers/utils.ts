@@ -4,7 +4,7 @@ import { Card } from "models/card";
 import { CardName } from "models/enum/cardName";
 import { Suite } from "models/enum/suite";
 
-const getFirstChar = (cardName: CardName): string => {
+export const getFirstChar = (cardName: CardName): string => {
   switch (cardName) {
     case CardName.Ace: return 'A';
     case CardName.Two: return '2';
@@ -19,6 +19,24 @@ const getFirstChar = (cardName: CardName): string => {
     case CardName.Jack: return 'J';
     case CardName.Queen: return 'Q';
     case CardName.King: return 'K';
+    default: return 'Joker'; // for Joker, return Joker
+  }
+}
+export const getFirstCharStr = (cardName: string): string => {
+  switch (cardName) {
+    case 'Ace': return 'A';
+    case 'Two': return '2';
+    case 'Three': return '3';
+    case 'Four': return '4';
+    case 'Five': return '5';
+    case 'Six': return '6';
+    case 'Seven': return '7';
+    case 'Eight': return '8';
+    case 'Nine': return '9';
+    case 'Ten': return 'T';
+    case 'Jack': return 'J';
+    case 'Queen': return 'Q';
+    case 'King': return 'K';
     default: return 'Joker'; // for Joker, return Joker
   }
 }
@@ -37,9 +55,13 @@ export const mapForSolver = (hand: Card[]): string[] => {
 }
 
 export const prettyPrintCard = (card: Card): string => {
+  console.log('card: ', card);
   return `${getFirstChar(card.cardName)}${getSuiteSymbol(card.suite)}`
 
 }
 
+export const randomizeChance = () => {
+  return Math.floor(Math.random() * 5) > 3;
+}
 
-export default { mapForSolver };
+export default { mapForSolver, prettyPrintCard, getFirstCharStr, randomizeChance };

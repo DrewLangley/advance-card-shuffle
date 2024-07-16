@@ -8,6 +8,8 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import { Button } from 'primereact/button';
 
+import axios from "axios";
+
 import Card from './components/Card.jsx';
 import CardsCarousel from './components/CardsCarousel.jsx';
 import GameSettings from './components/GameSettings.jsx';
@@ -15,11 +17,12 @@ import Heading from './components/Heading.jsx';
 import ButtonHolder from './App.style.js';
 import './App.css';
 
-import play from "./helpers/game.ts";
+// import play from "./helpers/game.ts";
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
+  const [result, setResult] = useState([]);
 
   const methods = useForm({
     mode: 'onChange',
@@ -27,7 +30,7 @@ export const App = () => {
     defaultValues: {
       playerName: 'Test',
       handSize: 5,
-      shuffleType: 'Faro',
+      shuffleType: 0,
       shuffleCount: 10,
     }
   });
@@ -45,9 +48,20 @@ export const App = () => {
       shuffleType,
       shuffleCount, } = values;
 
+    axios.get(`http://localhost:3000/play/${playerName}/${handSize}/${shuffleType}/${shuffleCount}`)
+      .then(({ data }) => {
+        setCards(data.cards);
+        setResult(data.result);
+      })
+      .catch((error) => {
+        console.error('Error fetching data: ', error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
 
-    const results = play(playerName, handSize, shuffleType, shuffleCount);
-    console.log('results: ', results);
+    // const results = play(playerName, handSize, shuffleType, shuffleCount);
+    // console.log('results: ', results);
     // const payload = {
     //   ...values,
     //   archived: values.status === 'Inactive',
@@ -87,7 +101,7 @@ export const App = () => {
         </form>
       </FormProvider>
 
-      {!loading && cards.length > 0 && <CardsCarousel />}
+      {!loading && cards.length > 0 && <CardsCarousel cards={cards} result={result} />}
     </Card>
   );
 }

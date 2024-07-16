@@ -1,9 +1,11 @@
+import { Suite } from "models/enum/suite";
 import { Deck } from "../models/deck";
 import { Player } from "../models/player";
 import { shuffle } from "./shuffle";
 import { ShuffleType } from "./shuffle/shuffleType";
+import { CardName } from "models/enum/cardName";
 
-export const play = (userName: string, handSize: number, shuffleType: ShuffleType, shuffleNumber: number) => {
+export const play = async (userName: string, handSize: number, shuffleType: ShuffleType, shuffleNumber: number) => {
 
   // create deck
   const deck = new Deck();
@@ -25,9 +27,9 @@ export const play = (userName: string, handSize: number, shuffleType: ShuffleTyp
   console.log('\n ',);
 
   return {
-    cards: player.hand,
+    cards: player.hand.map((card) => ({ cardName: CardName[card.cardName], suite: Suite[card.suite] })),
     result: player.getResult(),
   }
 }
 
-export default play;
+export default { play };

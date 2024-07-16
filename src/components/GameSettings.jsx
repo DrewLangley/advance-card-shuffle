@@ -32,7 +32,7 @@ export const GameSettings = () => {
 						.filter((el) => {
 							return isNaN(Number(el));
 						})
-						.map((item) => ({ name: item, value: item }))}
+						.map((item) => ({ name: item, value: ShuffleType[item] }))}
 				/>
 			</div>
 		</div>

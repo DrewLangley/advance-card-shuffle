@@ -1,20 +1,43 @@
 import React, { useState } from "react";
 import { Carousel } from "primereact/carousel";
-// import { ProductService } from "../service/ProductService";
-// import "./CarouselDemo.css";
+import { ImSpades, ImHeart, ImClubs, ImDiamonds } from "react-icons/im";
 
-export const CardsCarousel = ({ cards, cardCount }) => {
-	const [cardsVisible, setCardsVisible] = useState(cardCount ?? 5);
-	const [playerCards, setProducts] = useState([
-		{ cardName: "Jack", suite: "Hearts" },
-		{ cardName: "Jack", suite: "Hearts" },
-		{ cardName: "Jack", suite: "Hearts" },
-		{ cardName: "Jack", suite: "Hearts" },
-		{ cardName: "Jack", suite: "Hearts" },
-		// { cardName: "Jack", suite: "Hearts" },
-		// { cardName: "Jack", suite: "Hearts" },
-	]);
+import { getFirstCharStr } from "../helpers/utils";
 
+const formatCard = (card) => {
+	const { cardName, suite } = card;
+	let color, logo;
+	switch (suite) {
+		case "Hearts":
+			logo = <ImHeart size={40} color="red" />;
+			color = "red";
+			break;
+		case "Diamonds":
+			logo = <ImDiamonds size={40} color="red" />;
+			color = "red";
+			break;
+		case "Clubs":
+			logo = <ImClubs size={40} color="black" />;
+			color = "black";
+			break;
+		case "Spades":
+			logo = <ImSpades size={40} color="black" />;
+			color = "black";
+			break;
+		default:
+			return null;
+	}
+
+	return {
+		cardName,
+		logo,
+		color,
+		suite,
+		first: getFirstCharStr(card.cardName),
+	};
+};
+
+export const CardsCarousel = ({ cards, result }) => {
 	const responsiveOptions = [
 		{
 			breakpoint: "1024px",
@@ -33,22 +56,32 @@ export const CardsCarousel = ({ cards, cardCount }) => {
 		},
 	];
 
-	// const productService = new ProductService();
+	const cardTemplate = (card) => {
+		const { cardName, color, suite, logo, first } = formatCard(card);
+		console.log("first: ", first);
 
-	// useEffect(() => {
-	// 	productService
-	// 		.getProductsSmall()
-	// 		.then((data) => setProducts(data.slice(0, 9)));
-	// }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-	const cardTemplate = (product) => {
 		return (
-			<div className="product-item">
-				<div className="product-item-content">
-					<div className="mb-3"></div>
-					<div>
-						<h4 className="mb-1">{product.cardName}</h4>
-						<h6 className="mt-0 mb-3">${product.suite}</h6>
+			<div className="card-item shadow-1">
+				<div className="card-item-content">
+					<div className="grid col-12">
+						<div className="col-2 ml-1 mr-1 mt-1 mb-1">
+							<h4>{first}</h4>
+						</div>
+						<div className="col-2 ml-1 mr-1 mt-1 mb-1">
+							<h4>{logo}</h4>
+						</div>
+					</div>
+					<div className="mb-3 mt-3">
+						<h3 className="mb-1">{`${cardName} of ${suite}`}</h3>
+					</div>
+					<div className="grid col-12">
+						<div className="col-6"></div>
+						<div className="col-2 ml-1 mr-1 mt-1 mb-1">
+							<h4>{logo}</h4>
+						</div>
+						<div className="col-2 ml-1 mr-1 mt-1 mb-1">
+							<h4>{first}</h4>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -59,15 +92,20 @@ export const CardsCarousel = ({ cards, cardCount }) => {
 		<div className="carousel-demo">
 			<div className="card">
 				<Carousel
-					value={playerCards}
-					numVisible={cardsVisible}
+					value={cards}
+					numVisible={cards?.length ?? 0}
 					numScroll={0}
 					showNavigators={false}
 					showIndicators={false}
 					responsiveOptions={responsiveOptions}
 					className="custom-carousel"
 					itemTemplate={cardTemplate}
-					header={<h5>Circular, AutoPlay, 3 Items per Page and Scroll by 1</h5>}
+					header={
+						<h2>
+							You have a {result.handName} with a rank of {result.handRank} and{" "}
+							{result.value} points.
+						</h2>
+					}
 				/>
 			</div>
 		</div>

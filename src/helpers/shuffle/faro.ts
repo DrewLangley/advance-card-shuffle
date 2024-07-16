@@ -1,3 +1,4 @@
+import { randomizeChance } from "helpers/utils";
 import { Deck } from "../../models/deck"
 
 export const faroShuffle = (deck: Deck, repeat: number = 20): Deck => {
@@ -11,8 +12,15 @@ export const faroShuffle = (deck: Deck, repeat: number = 20): Deck => {
   console.log(`Faro shuffling... repeating ${repeat}`);
 
   for (let i = 0; i < firstHalf.length; i++) {
-    shuffledCards.push(firstHalf[i]);
-    shuffledCards.push(secondHalf[i]);
+    if (!randomizeChance()) {
+      // random chance from the left hand first
+      shuffledCards.push(firstHalf[i]);
+      shuffledCards.push(secondHalf[i]);
+    } else {
+      // random chance from the right hand first
+      shuffledCards.push(secondHalf[i]);
+      shuffledCards.push(firstHalf[i]);
+    }
   }
 
   if (deck.cards.length % 2 !== 0) {
