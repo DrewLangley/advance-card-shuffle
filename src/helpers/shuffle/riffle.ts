@@ -1,4 +1,4 @@
-import { randomizeChance } from "helpers/utils";
+import { randomizeChance } from "../../helpers/utils";
 import { Deck } from "../../models/deck"
 
 export const riffleShuffle = (deck: Deck, repeat: number = 20): Deck => {

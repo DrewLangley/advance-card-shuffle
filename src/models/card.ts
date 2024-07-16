@@ -1,4 +1,4 @@
-import { prettyPrintCard } from "helpers/utils";
+import { prettyPrintCard } from "../helpers/utils";
 import { CardName } from "./enum/cardName";
 import { Suite } from "./enum/suite";
 
@@ -8,11 +8,13 @@ import { Suite } from "./enum/suite";
  */
 export class Card {
   cardName: CardName;
-  suite: Suite;
+  suite: Suite = 0;
 
-  constructor(cardName: CardName, suite: Suite) {
+  constructor(cardName: CardName, suite?: Suite) {
     this.cardName = cardName;
-    this.suite = suite;
+    if (suite) {
+      this.suite = suite;
+    }
   }
 
   public toString(): string {

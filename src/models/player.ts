@@ -6,7 +6,7 @@ export class Player {
 
   hand: Card[] = [];
 
-  public name: string;
+  public name: string = 'Test';
 
   constructor(name?: string) {
     if (name) {
@@ -18,11 +18,11 @@ export class Player {
   public dealCards = (cards: Card[], cardCount: number, fromTop: boolean = true): void => {
     if (fromTop) {
       for (let i = 0; i < cardCount; i++) {
-        this.hand.unshift(cards.shift());
+        this.hand.unshift(cards.shift() ?? cards[0]);
       }
     } else {
       for (let i = 0; i < cardCount; i++) {
-        this.hand.push(cards.shift());
+        this.hand.push(cards.shift() ?? cards[0]);
       }
     }
   }

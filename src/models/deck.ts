@@ -15,13 +15,13 @@ export class Deck {
     (Object.keys(Suite).filter((el) => { return isNaN(Number(el)) })).forEach((suite) => {
       (Object.keys(CardName).filter((el) => { return isNaN(Number(el)) })).forEach((card) => {
         if (card !== "Joker") {
-          tempCards.push(new Card(CardName[card], Suite[suite]));
+          tempCards.push(new Card(CardName[card as keyof typeof CardName], Suite[suite as keyof typeof Suite]));
         }
       });
     });
 
     if (includeJokers) {
-      tempCards.push(new Card(CardName.Joker, null), new Card(CardName.Joker, null));
+      tempCards.push(new Card(CardName.Joker, undefined), new Card(CardName.Joker, undefined));
     }
 
     this.cards = tempCards;

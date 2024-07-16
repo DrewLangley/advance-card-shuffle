@@ -1,8 +1,8 @@
 // we need to translate the card values for the solver eg Ace of Diamonds => Ad
 
-import { Card } from "models/card";
-import { CardName } from "models/enum/cardName";
-import { Suite } from "models/enum/suite";
+import { Card } from "../models/card";
+import { CardName } from "../models/enum/cardName";
+import { Suite } from "../models/enum/suite";
 /**
  * Maps cards from the ENUM version to the evaluator version
  * @param {CardName} cardName card name to translate

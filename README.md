@@ -12,6 +12,10 @@ Feel free to use others like npm/npx.
 yarn
 ```
 
+## Running unit tests
+```
+yarn test
+```
 ## Running console poker game
 ```
 yarn play
@@ -35,6 +39,7 @@ yarn start:app
 ## Packages
 
 Here are the packages used in this project:
+- [jest](https://jestjs.io/): Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
 
 - [express](https://expressjs.com/): Fast, unopinionated, minimalist web framework for Node.js.
 - [axios](https://axios-http.com/): A promise-based HTTP client for the browser and Node.js.
