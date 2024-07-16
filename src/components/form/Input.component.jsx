@@ -31,12 +31,7 @@ const Input = ({ name, label, required, className, error }) => {
 						className="p-error"
 						style={{ position: "relative", left: "1%" }}
 					>
-						error&nbsp;
-						<i
-							className="pi pi-info-circle"
-							style={{ fontSize: "0.75rem" }}
-							data-tip={`${error.message}`}
-						/>
+						{error.message}
 					</small>
 				</>
 			)

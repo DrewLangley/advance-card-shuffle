@@ -38,13 +38,11 @@ const NumberInput = ({
 		return (
 			error.message && (
 				<>
-					<small className="p-error" style={{ position: "absolute" }}>
-						error&nbsp;
-						<i
-							className="pi pi-info-circle"
-							style={{ fontSize: "0.75rem" }}
-							data-tip={`${error.message}`}
-						/>
+					<small
+						className="p-error"
+						style={{ position: "relative", left: "1%" }}
+					>
+						{error.message}
 					</small>
 				</>
 			)

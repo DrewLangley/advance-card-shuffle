@@ -34,7 +34,6 @@ export const App = () => {
   const { handleSubmit } = methods;
 
   const dealCards = (values) => {
-    console.log('values: ', values);
     setLoading(true);
 
     const { playerName,
