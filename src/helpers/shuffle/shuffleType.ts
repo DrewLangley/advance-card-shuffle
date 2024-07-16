@@ -7,4 +7,5 @@ export enum ShuffleType {
   FisherYates,
   Riffle,
   Default,
+  OverHand,
 }

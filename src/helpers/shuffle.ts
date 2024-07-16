@@ -2,6 +2,7 @@ import { Deck } from "../models/deck";
 import { faroShuffle } from "./shuffle/faro";
 import { fisherYatesShuffle } from "./shuffle/fisherYates";
 import { riffleShuffle } from "./shuffle/riffle";
+import { overHandShuffle } from "./shuffle/overHand";
 import { ShuffleType } from "./shuffle/shuffleType";
 
 /** 
@@ -21,9 +22,15 @@ export const shuffle = (deck: Deck, shuffleType: ShuffleType, shuffleCount: numb
     case ShuffleType.FisherYates:
       shuffledDeck = fisherYatesShuffle(shuffledDeck, shuffleCount);
       break;
+    case ShuffleType.OverHand:
+      shuffledDeck = overHandShuffle(shuffledDeck, shuffleCount);
+      break;
     default:
       // Default shuffle logic
-      shuffledDeck = riffleShuffle(deck, shuffleCount);
+      // fisher yates simulates spreading them out on a table
+      shuffledDeck = fisherYatesShuffle(deck, 2);
+      // riffle is the most common technique
+      shuffledDeck = riffleShuffle(deck, 6);
   }
   return shuffledDeck;
 }
