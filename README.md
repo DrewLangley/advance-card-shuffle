@@ -1,5 +1,5 @@
 # OOP Tech Test (Advance.io)
- This is a technical test for advance - card shuffle and poker game please see the [pdf spec]('OOP%20Tech%20Test.pdf')
+ This is a technical test for advance - card shuffle and poker game please see the [pdf spec]('./OOP%20Tech%20Test.pdf')
 
 
 ## Getting started
@@ -16,10 +16,17 @@ yarn
 ```
 yarn test
 ```
+![image](https://github.com/user-attachments/assets/e47dd8e6-412b-4c58-9bb4-24d41ccfe8e4)
+
 ## Running console poker game
 ```
 yarn play
 ```
+
+Follow the prompts to change hand size and shuffle type etc
+![image](https://github.com/user-attachments/assets/acd256ca-a02a-47fc-9b83-a26cdb0681a2)
+
+![image](https://github.com/user-attachments/assets/e7d11758-d9b3-4534-be07-9840b3e0bf96)
 
 ## Running web app poker game
 
@@ -29,11 +36,20 @@ I had to split the code into a FE and simple BE as the poker evaluator library u
 ```
 yarn start:api
 ```
+![image](https://github.com/user-attachments/assets/f20b3f1c-ae08-44ae-b438-5efdf86c16ff)
+
 Open another command line window
 
 ```
 yarn start:app
 ```
+
+When asked to run on another port press Y.
+![image](https://github.com/user-attachments/assets/8c7cd81f-4396-499a-b858-435be3aabc74)
+
+The app will then open in a browser window
+
+![image](https://github.com/user-attachments/assets/62a4ba4d-1a32-4195-85f3-ab537f6e4759)
 
 
 ## Packages
