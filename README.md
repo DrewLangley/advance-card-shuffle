@@ -1,11 +1,11 @@
 # OOP Tech Test (Advance.io)
- This is a technical test for advance - card shuffle and poker game please see the [pdf spec]('./OOP%20Tech%20Test.pdf')
+ This is a technical test for advance - card shuffle and poker game. Please see the [pdf spec]('./OOP%20Tech%20Test.pdf')
 
 
 ## Getting started
 Created using Node v20 and [Yarn Package Manager](https://www.npmjs.com/package/yarn)
 
-Feel free to use others like npm/npx.
+Feel free to use other package managers such as npm/npx.
 
 ### Installing node modules
 ```
